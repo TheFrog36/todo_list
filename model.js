@@ -28,8 +28,8 @@ class MultiToDo extends ToDo{
     }
     //subToDos [ToDoBase1, ToDoBase2, ToDoBase3, ToDoBase4]
     //getPriority = gives max priority within his subtodos
-    getPrority(){
-        
+    getPrority(){                                                        //New
+
     }
 }
 
@@ -40,4 +40,7 @@ class ExpiringToDo extends ToDo{
     }
     //deadLine default = tomorrow
     //getPriority = maxPriority between it and max-priority - day left
+    getPrority(){                                                       //new
+
+    }
 }
