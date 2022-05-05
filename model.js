@@ -11,6 +11,7 @@ class ToDo {
         medio: {order: 1, name:'medio', color:'yellow'},
         alto: {order: 2, name:'alto', color:'orange'},
         moltoAlto: {order: 3, name:'moltoAlto', color:'red'},
+        expired: {order: -1, name:'scaduto', color:'grey'}
     }
 
     static getHumanDate(inputDate = new Date() ){
@@ -100,7 +101,7 @@ class ExpiringToDo extends ToDo{
     }
     getPriority(){    //Restituisce la priorità in base ai giorni rimanenti       //alsoalso fare in modo che restituisca un dato .priority              
         const time_difference = this._deadLine - this._creationDate - 1;   //Sostituire creationDate con now
-        if(time_difference < 0) return "EXPIRED";
+        if(time_difference < 0) return ToDo.PRIORITY_LEVEL.expired;
         const days_left = Math.floor(time_difference /(1000*60*60*24));
         // const calculated_priority = Math.max((3-days_left), this.priority.order) 
         const calculated_priority = 3-days_left >  this.priority.order ? 3-days_left : this.priority.order
