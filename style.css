@@ -13,7 +13,8 @@ html, body{
     font-size: medium;
     margin: auto;
     background-color: beige;
-    width: 800px;
+    max-width: 800px;
+    width: 100%;
     height: 100%;
 }
 
