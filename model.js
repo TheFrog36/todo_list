@@ -1,5 +1,5 @@
 class ToDo {
-    constructor(name, priority = TYPE.basso, tags = []){
+    constructor(name, priority = TYPE. basso, tags = []){
         this.name = name;
         this.priority = priority;
         this._creationDate = new Date().getTime();
@@ -7,10 +7,10 @@ class ToDo {
     }
 
     static TYPE = {
-        basso: 0,
-        medio: 1,
-        alto: 2,
-        moltoAlto: 3,
+        basso: {order: 0, name:'basso', color:'green'},
+        medio: {order: 1, name:'medio', color:'yellow'},
+        alto: {order: 2, name:'alto', color:'orange'},
+        moltoAlto: {order: 3, name:'moltoAlto', color:'red'},
     }
 
     get creationDate(){
@@ -19,7 +19,7 @@ class ToDo {
     
     toString(){
         return 'name: ' + this.name + '\n' +
-               'prority: ' + this.priority + '\n' +
+               'prority: ' + this.priority.order + '\n' +
                'creationDate: ' + this.creationDate + '\n' +
                'tags: ' + this.tags + '\n';
     }
@@ -33,16 +33,16 @@ class MultiToDo extends ToDo{
     }
     
     getPriority(){    //Restituisce la priorità più alta tra this.priority e le priorità di subToDo
-        if(this.priority === 3) return 3;
-        const array_highest_priority = this.subToDo.reduce((p,c) => p.priority > c.priority ? p:c)
-        return array_highest_priority.priority > this.priority ? array_highest_priority.priority : this.priority
+        if(this.priority.order === 3) return 3;
+        const array_highest_priority = this.subToDo.reduce((p,c) => p.priority.order > c.priority.order ? p:c)
+        return array_highest_priority.priority.order > this.priority.order ? array_highest_priority.priority.order : this.priority.order
     }
 
     toString(){    //Stampo i dati di MultiToDo e i nomi e priorità di subToDo
         const to_do_string = super.toString();
         let my_string = 'actual priority: ' + this.actual_priority + '\n';
          for (const iterator of this.subToDo) {
-            my_string += 'task name: ' + iterator.name + ' priority: ' + iterator.priority + '\n';
+            my_string += 'task name: ' + iterator.name + ' priority: ' + iterator.priority.order + '\n';
         }
         return to_do_string + my_string
     }
@@ -91,6 +91,6 @@ class ExpiringToDo extends ToDo{
         if(time_difference < 0) return "EXPIRED";
         const days_left = Math.floor(time_difference /(1000*60*60*24));
         const calculated_priority = 3-days_left
-        return calculated_priority > this.priority ? calculated_priority : this.priority;
+        return calculated_priority > this.priority.order ? calculated_priority : this.priority.order;
     }
 }
