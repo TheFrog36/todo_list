@@ -41,7 +41,7 @@ class MultiToDo extends ToDo{
     toString(){    //Stampo i dati di MultiToDo e i nomi e priorità di subToDo
         const to_do_string = super.toString();
         let my_string = 'actual priority: ' + this.actual_priority + '\n';
-        for (const iterator of this.subToDo) {
+         for (const iterator of this.subToDo) {
             my_string += 'task name: ' + iterator.name + ' priority: ' + iterator.priority + '\n';
         }
         return to_do_string + my_string
@@ -54,7 +54,7 @@ class MultiToDo extends ToDo{
 }
 
 class ExpiringToDo extends ToDo{
-    constructor(name, priority, tags, deadLine){
+    constructor(name, priority, tags, deadLine = new Date().getTime() + 1000*60*60*24){
         super(name, priority, tags);
         this._deadLine = deadLine;
         this.time_left = this.timeLeft();
@@ -87,9 +87,10 @@ class ExpiringToDo extends ToDo{
                'minuti: ' + minutes_left;
     }
     getPriority(){    //Restituisce la priorità in base ai giorni rimanenti                     
-        const time_difference = this._deadLine - this._creationDate;
+        const time_difference = this._deadLine - this._creationDate - 1;
         if(time_difference < 0) return "EXPIRED";
         const days_left = Math.floor(time_difference /(1000*60*60*24));
-        return days_left < this.priority ? 3-days_left : this.priority;
+        const calculated_priority = 3-days_left
+        return calculated_priority > this.priority ? calculated_priority : this.priority;
     }
 }
