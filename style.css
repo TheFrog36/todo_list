@@ -5,20 +5,25 @@ html, body{
     margin: 0px;
     background-color: #515151;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
 *{
     box-sizing: border-box;
 }
 #todo-container{
+    font-family: 'Open Sans', sans-serif;
     padding-top: 20px;
     font-size: medium;
     margin: auto;
     background-color: beige;
     max-width: 800px;
     width: 100%;
-    height: fit-content;
+    height: 750px;
 }
 
 .task-div{
+    border-radius: 5px;
     margin: auto;
     width: 300px;
     height: 120px;
@@ -59,6 +64,7 @@ html, body{
 
 .tag-div{
     text-align: center;
+    border-radius: 5px;
     min-width: 80px;
     background-color: aqua;
     flex-grow: 1;
