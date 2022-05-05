@@ -59,7 +59,7 @@ html, body{
 
 .tag-div{
     text-align: center;
-    min-width: 90px;
+    min-width: 80px;
     background-color: aqua;
     flex-grow: 1;
     flex-basis: 0;
