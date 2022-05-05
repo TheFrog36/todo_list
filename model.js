@@ -1,5 +1,5 @@
 class ToDo {
-    constructor(name, priority = TYPE. basso, tags = []){
+    constructor(name, priority = ToDo.TYPE.basso, tags = []){
         this.name = name;
         this.priority = priority;
         this._creationDate = new Date().getTime();
@@ -86,11 +86,11 @@ class ExpiringToDo extends ToDo{
                'ore: ' + hours_left + '\n' +
                'minuti: ' + minutes_left;
     }
-    getPriority(){    //Restituisce la priorità in base ai giorni rimanenti                     
-        const time_difference = this._deadLine - this._creationDate - 1;
+    getPriority(){    //Restituisce la priorità in base ai giorni rimanenti       //alsoalso fare in modo che restituisca un dato .priority              
+        const time_difference = this._deadLine - this._creationDate - 1;   //Sostituire creationDate con now
         if(time_difference < 0) return "EXPIRED";
         const days_left = Math.floor(time_difference /(1000*60*60*24));
         const calculated_priority = 3-days_left
-        return calculated_priority > this.priority.order ? calculated_priority : this.priority.order;
+        return calculated_priority > this.priority.order ? calculated_priority : this.priority.order;  //usare max
     }
 }
