@@ -1,15 +1,13 @@
 const toDo1 = new ExpiringToDo("bolletta luce", ToDo.PRIORITY_LEVEL.medio,["pagamento"], new Date('2022-07-04'));
 const toDo2 = new ExpiringToDo("scadenza patente", ToDo.PRIORITY_LEVEL.basso, ['rinnovo','macchina'], new Date('2027-05-04'));
-const toDo3 = new ExpiringToDo("abbonamento xbox" , ToDo.PRIORITY_LEVEL.alto,['xbox','varie','futile'], new Date('2022-05-07'));
+const toDo3 = new ExpiringToDo("abbonamento xbox" , ToDo.PRIORITY_LEVEL.alto,['xbox','varie','futile'], new Date('2022-05-10 '));
 const toDo4 = new ToDo('latte', ToDo.PRIORITY_LEVEL.moltoAlto, ['spesa']);
 const toDo5 = new MultiToDo('scadenze', ToDo.PRIORITY_LEVEL.medio, ['vario'], [toDo1, toDo2, toDo3, toDo4]);
 const toDo6 = new ExpiringToDo('test', ToDo.PRIORITY_LEVEL.medio, ['test'])
 const toDo7 = new ExpiringToDo('yoyo')
 const toDo8 = new ExpiringToDo("test" , ToDo.PRIORITY_LEVEL.moltoAlto,['boh2','boh1','boh'], new Date('2023-05-07'));
 const toDo9 = new ExpiringToDo('test2', ToDo.PRIORITY_LEVEL.basso, [], new Date('2021-05-07'));
-
 const listToDo = [toDo1, toDo2, toDo3, toDo8, toDo9]
-
 
 console.log(ToDo.getHumanDate(toDo1._deadLine))
 
@@ -56,12 +54,6 @@ function displayToDo(arrayTask) {
         divGenerale.appendChild(divGriglia)
         container.appendChild(divGenerale);
     }
-
 } 
 
 displayToDo(listToDo);
-
-
-
-
-
