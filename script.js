@@ -55,5 +55,5 @@ function displayToDo(arrayTask) {
         container.appendChild(divGenerale);
     }
 } 
-
-displayToDo(listToDo);
+console.log(toDo6.constructor.name)
+// displayToDo(listToDo);

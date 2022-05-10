@@ -91,7 +91,7 @@ class ExpiringToDo extends ToDo{
     }
 
     timeLeft(){    //restituisce il tempo rimanente prima della data di scadenza
-        const time_difference = this._deadLine - this._creationDate;
+        const time_difference = this._deadLine - new Date().getTime();
         const days_left = Math.floor(time_difference /(1000*60*60*24));
         const hours_left = Math.floor((time_difference % 1000*60*60*24)/(1000*60*60)) ;
         const minutes_left = Math.floor((time_difference %1000*60*60) / (1000*60));
@@ -100,7 +100,7 @@ class ExpiringToDo extends ToDo{
                'minuti: ' + minutes_left;
     }
     getPriority(){    //Restituisce la priorità in base ai giorni rimanenti       //alsoalso fare in modo che restituisca un dato .priority              
-        const time_difference = this._deadLine - this._creationDate - 1;   //Sostituire creationDate con now
+        const time_difference = this._deadLine - new Date().getTime() - 1;   //Sostituire creationDate con now
         if(time_difference < 0) return ToDo.PRIORITY_LEVEL.expired;
         const days_left = Math.floor(time_difference /(1000*60*60*24));
         // const calculated_priority = Math.max((3-days_left), this.priority.order) 
